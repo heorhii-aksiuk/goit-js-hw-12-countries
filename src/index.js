@@ -12,62 +12,64 @@ const refs = {
 
 const { bodyEl, inputEl, formEl, countriesEl } = refs;
 
-inputEl.addEventListener('input', debounce(searchCountry, 500));
+// inputEl.addEventListener('input', debounce(searchCountry, 500));
 
 
 
 
-function searchCountry(event) {
-event.preventDefault();
-  let contry = event.target.value;
-  countriesEl.innerHTML = '';
+// function searchCountry(event) {
+// event.preventDefault();
+//   let contry = event.target.value;
+//   countriesEl.innerHTML = '';
 
-return fetch(`https://restcountries.com/v2/name/${contry}`)
-  .then(data => data.json())
-    .then(data => (countriesEl.innerHTML = markup(data[0])));
+// return fetch(`https://restcountries.com/v2/name/${contry}`)
+//   .then(data => data.json())
+//     .then(data => (countriesEl.innerHTML = markup(data[0])));
   
-  // работает только с запросом и строкой запроса, возвращает данные
-}
-
-
-
-
-
-
-
-
-
-
-
-// class FetchCountries {
-//   constructor() {
-//     this._baseUrl = 'https://restcountries.com/v2/name/';
-//     this._searchQuery = 'ukraine';
-//   }
-
-//   set searchQuery(value) {
-//     return (this._searchQuery = value);
-//   }
-
-//   get searchQuery() {
-//     return this._searchQuery
-//   }
-
-//   getFetch() {
-//     let url = this._baseUrl + this._searchQuery;
-//     return fetch(url)
-//       .then(data => data.json())
-//       .then(data => data);;
-//   }
-
-
+//   // работает только с запросом и строкой запроса, возвращает данные
 // }
 
-// const fetchCountries = new FetchCountries()
+
+
+
+
+
+
+
+
+
+
+class FetchCountries {
+  constructor() {
+    this._baseUrl = 'https://restcountries.com/v2/name/';
+    this._searchQuery = 'ukraine';
+  }
+
+  set searchQuery(value) {
+    return (this._searchQuery = value);
+  }
+
+  get searchQuery() {
+    return this._searchQuery
+  }
+
+  getFetch() {
+    let url = this._baseUrl + this._searchQuery;
+    return fetch(url)
+      .then(data => data.json())
+      .then(data => { return data });
+  }
+
+
+}
+
+const fetchCountries = new FetchCountries()
 
 // console.log(fetchCountries.searchQuery);
-// fetchCountries.searchQuery = 'test'
 // console.log(fetchCountries.getFetch());
 
+const mark = fetchCountries.getFetch().then(data => markup(data));
+console.log(mark);
 
+countriesEl.innerHTML = mark;
 

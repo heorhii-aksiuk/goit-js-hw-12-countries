@@ -1,23 +1,28 @@
-/* 
-1. Создать рефы 
-2. Cоздать статичкскую разметку 🤏
-2. Создать динамическую разметку 
-3. Прописать стили
-4. Создать запрос на API
-*/
-
 import './sass/main.scss';
 import markup from './templates/country-info.handlebars';
+import debounce from 'lodash.debounce'
 
 const refs = {
-  body: document.querySelector('body'),
+  bodyEl: document.querySelector('body'),
+  inputEl: document.querySelector('input'),
+  formEl: document.querySelector('form'),
+  countriesEl: document.querySelector('.countries-info-container'),
 };
 
-console.log(markup());
+const { bodyEl, inputEl, formEl, countriesEl } = refs;
 
-refs.body.insertAdjacentHTML('afterend', markup());
+inputEl.addEventListener('input', debounce(searchCountry, 500));
 
-fetch('https://restcountries.com/v2/name/peru')
+function searchCountry(event) {
+event.preventDefault();
+  contry = event.target.value;
+  countriesEl.innerHTML = '';
+
+return fetch(`https://restcountries.com/v2/name/${event.target.value}`)
   .then(data => data.json())
+  .then(data => countriesEl.innerHTML = markup(data[0]));
+}
 
-  .then(data => refs.body.insertAdjacentHTML('afterend', markup(data[0])));
+
+
+

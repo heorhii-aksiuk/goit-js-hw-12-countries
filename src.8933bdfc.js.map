@@ -1,1 +1,0 @@
-{"version":3,"sources":["index.js"],"names":["refs"],"mappings":";;;AAYA,aAZA,QAAA,oBAEA,MAAMA,EAAO","file":"src.8933bdfc.js","sourceRoot":"../src","sourcesContent":["import './sass/main.scss';\n\nconst refs = {\n\n}\n\n/* \n1. Создать рефы \n2. Cоздать статичкскую разметку\n2. Создать динамическую разметку\n3. Прописать стили\n4. Создать запрос на API\n*/\n"]}

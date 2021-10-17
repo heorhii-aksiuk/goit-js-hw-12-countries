@@ -1,0 +1,15 @@
+<div>
+  <h3>{{name}}</h3>
+  <div>
+    <div>
+      <p>Capital:<span>{{capital}}</span></p>
+      <p>Population:<span>{{population}}</span></p>
+      <p>Languages:</p>
+      <ul>
+        {{#each languages}}
+        <li>{{this.name}}</li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+</div>

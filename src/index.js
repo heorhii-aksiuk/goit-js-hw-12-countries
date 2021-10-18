@@ -1,75 +1,92 @@
 import './sass/main.scss';
 
-import markup from './templates/country-info.handlebars';
+import countryCardTemplate from './templates/country-info.hbs';
+import countriesListTemplate from './templates/countries-list.hbs'
 import debounce from 'lodash.debounce'
 
 const refs = {
-  bodyEl: document.querySelector('body'),
   inputEl: document.querySelector('input'),
-  formEl: document.querySelector('form'),
   countriesEl: document.querySelector('.countries-info-container'),
 };
 
-const { bodyEl, inputEl, formEl, countriesEl } = refs;
+const { inputEl, countriesEl } = refs;
 
-// inputEl.addEventListener('input', debounce(searchCountry, 500));
+inputEl.addEventListener('input', debounce(searchCountry, 500));
 
-
-
-
-// function searchCountry(event) {
-// event.preventDefault();
-//   let contry = event.target.value;
-//   countriesEl.innerHTML = '';
-
-// return fetch(`https://restcountries.com/v2/name/${contry}`)
-//   .then(data => data.json())
-//     .then(data => (countriesEl.innerHTML = markup(data[0])));
-  
-//   // работает только с запросом и строкой запроса, возвращает данные
-// }
-
-
-
-
-
-
-
-
-
-
-
-class FetchCountries {
-  constructor() {
-    this._baseUrl = 'https://restcountries.com/v2/name/';
-    this._searchQuery = 'ukraine';
-  }
-
-  set searchQuery(value) {
-    return (this._searchQuery = value);
-  }
-
-  get searchQuery() {
-    return this._searchQuery
-  }
-
-  getFetch() {
-    let url = this._baseUrl + this._searchQuery;
-    return fetch(url)
-      .then(data => data.json())
-      .then(data => { return data });
-  }
-
-
+function searchCountry(event) {
+  let searchQuery = event.target.value;
+  countriesEl.innerHTML = '';
+  if (searchQuery.length > 1) fetchCountries(searchQuery).then(createMarkup);
 }
 
-const fetchCountries = new FetchCountries()
+
+function fetchCountries(searchQuery) {
+return fetch(`https://restcountries.com/v2/name/${searchQuery}`)
+  .then(data => data.json())
+}
+
+function createMarkup(data) {
+  if (data.status === 404) return;
+
+  if (data.length === 1) {
+    countriesEl.innerHTML = countryCardTemplate(data[0]);
+  } else {
+    countriesEl.innerHTML = countriesListTemplate(data);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// class FetchCountries {
+//   constructor() {
+//     this._baseUrl = 'https://restcountries.com/v2/name/';
+//     this._searchQuery = 'ukraine';
+//   }
+
+//   set searchQuery(value) {
+//     return (this._searchQuery = value);
+//   }
+
+//   get searchQuery() {
+//     return this._searchQuery
+//   }
+
+//   getFetch() {
+//     let url = this._baseUrl + this._searchQuery;
+//     return fetch(url)
+//       .then(data => data.json())
+//       .then(data => { return data });
+//   }
+
+
+// }
+
+// const fetchCountries = new FetchCountries()
 
 // console.log(fetchCountries.searchQuery);
 // console.log(fetchCountries.getFetch());
 
-const mark = fetchCountries.getFetch().then(data => markup(data));
-console.log(mark);
+// const mark = fetchCountries.getFetch().then(data => markup(data));
+// console.log(mark);
 
-countriesEl.innerHTML = mark;
+// countriesEl.innerHTML = mark;
 

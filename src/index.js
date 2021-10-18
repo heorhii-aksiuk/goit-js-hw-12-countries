@@ -23,12 +23,11 @@ function searchCountry(event) {
 function fetchCountries(searchQuery) {
 return fetch(`https://restcountries.com/v2/name/${searchQuery}`)
   .then(data => data.json())
-  .catch(error => console.log(error));
 }
 
 function createMarkup(data) {
   if (data.status === 404) return;
-  
+
   if (data.length === 1) {
     countriesEl.innerHTML = countryCardTemplate(data[0]);
   } else {

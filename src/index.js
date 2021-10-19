@@ -14,6 +14,8 @@ const { inputEl, templateContainerEl } = refs;
 //fetch
 import { fetchCountries } from './js/fetch-countries';
 
+/* */
+
 inputEl.addEventListener('input', debounce(searchCountry, 500));
 
 function searchCountry(event) {

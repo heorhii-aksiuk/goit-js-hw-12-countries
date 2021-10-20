@@ -48,7 +48,7 @@ h1 {
   text-align: center;
   padding-top: 20px;
   color: white;
-  text-shadow: 2px 2px black, 4px 4px white, 6px 6px black, 8px 8px white, 10px 10px black,
+  text-shadow: 2px 2px black, 4px 4px rgba(255, 255, 255, 0.8), 6px 6px rgba(0, 0, 0, 0.60), 8px 8px rgba(255, 255, 255, 0.40), 10px 10px rgba(0, 0, 0, 0.20),
 }
 
 h2 {
@@ -57,7 +57,7 @@ h2 {
   text-align: center;
   padding-top: 20px;
   color: white;
-  text-shadow: 2px 2px black,
+  text-shadow: 2px 2px rgba(0, 0, 0, 0.8),
 }
 
 form {
@@ -73,8 +73,8 @@ input {
   border-radius: 7px;
   background-color: #eeeeee;
   border: 2px solid #303030;
-  border-radius: 10px 0px 9px 0px;
-  box-shadow: 3px 3px 5px -2px #000000;
+  border-radius: 10px;
+  box-shadow: 3px 3px 2px -2px #000000;
 
   &::placeholder {
     font-size: 15px;
@@ -88,10 +88,19 @@ input {
   flex-direction: column;
 }
 
+.countries-list {
+  width: 310px;
+  background-color: rgba(255, 255, 255, 0.65);
+  box-shadow: 3px 3px 2px 0px hsla(0, 0%, 0%, 0.3);
+  border-radius: 5px;
+  padding: 5px;
+}
+
 .country-card {
   width: 310px;
   align-self: center;
-  background-color: rgba(255, 255, 255, 0.514);
+  background-color: rgba(255, 255, 255, 0.65);
+  box-shadow: 3px 3px 2px 0px hsla(0, 0%, 0%, 0.3);
   border-radius: 5px;
   padding: 5px;
 

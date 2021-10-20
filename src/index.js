@@ -21,7 +21,7 @@ inputEl.addEventListener('input', debounce(searchCountry, 500));
 function searchCountry(event) {
   let searchQuery = event.target.value.trim();
   templateContainerEl.innerHTML = '';
-  if (searchQuery === '') return;
+  if (!searchQuery == (/[^a-zA-Z]/g, '') || searchQuery === '') return;
     fetchCountries(searchQuery).then(createMarkup);
 }
 

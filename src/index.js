@@ -10,7 +10,7 @@ import countryCardTemplate from './templates/country-info.hbs';
 import countriesListTemplate from './templates/countries-list.hbs'
 //refs
 import refs from './js/refs';
-const { inputEl, templateContainerEl } = refs;
+const { inputEl, containerForTemplateEl } = refs;
 //fetch
 import { fetchCountries } from './js/fetch-countries';
 
@@ -20,8 +20,8 @@ inputEl.addEventListener('input', debounce(searchCountry, 500));
 
 function searchCountry(event) {
   let searchQuery = event.target.value.trim();
-  templateContainerEl.innerHTML = '';
-  if (searchQuery === '') return;
+  containerForTemplateEl.innerHTML = '';
+  if (!searchQuery.match(/^[a-zA-Z_ ]*$/) || searchQuery === '') return;
     fetchCountries(searchQuery).then(createMarkup);
 }
 
@@ -29,9 +29,9 @@ function createMarkup(data) {
   if (data.status === 404) {
     notice(noticeSetup);
   } else if (data.length === 1) {
-    templateContainerEl.innerHTML = countryCardTemplate(data[0]);
+    containerForTemplateEl.innerHTML = countryCardTemplate(data[0]);
   } else if (data.length < 10) {
-    templateContainerEl.innerHTML = countriesListTemplate(data);
+    containerForTemplateEl.innerHTML = countriesListTemplate(data);
   } else {
     error(errorSetup);
   }

@@ -1,4 +1,4 @@
 export default {
   inputEl: document.querySelector('input'),
-  templateContainerEl: document.querySelector('.countries-info-container'),
+  containerForTemplateEl: document.querySelector('.countries-info-container'),
 };

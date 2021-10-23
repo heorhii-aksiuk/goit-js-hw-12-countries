@@ -40,10 +40,10 @@ section {
   display: flex;
   flex-direction: column;
   background-color: #ffb84e36;
-  // background: linear-gradient(135deg, #ffb84e 0%, #c0d465 39%, #267b91 100%);
   border-bottom: 1px solid #272727;;
   box-shadow: 3px 3px 5px -2px #000000;
   border-radius: 0 0 10px 10px;
+  opacity: 0.85;
   animation: bg-color-change 30s infinite;
 
   @keyframes bg-color-change {
@@ -114,6 +114,7 @@ input {
   border-radius: 10px;
   box-shadow: 2px 2px 4px -2px #000000;
   outline: none;
+  opacity: 0.85;
 
   &::placeholder {
     font-size: 15px;
@@ -122,6 +123,7 @@ input {
   &:focus {
   box-shadow: 2px 2px 2px -2px #000000;
   background-color: #ffffff;
+  opacity: 1;
   }
 
 }

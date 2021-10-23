@@ -68,63 +68,10 @@ function createMarkup(data) {
     countriesEl.innerHTML = countryCardTemplate(data[0]);
   } else if (data.length < 10) {
     countriesEl.innerHTML = countriesListTemplate(data);
+    containerForTemplateEl.innerHTML = countryCardTemplate(data[0]);
+  } else if (data.length < 20) {
+    containerForTemplateEl.innerHTML = countriesListTemplate(data);
   } else {
     error(errorSetup);
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// class FetchCountries {
-//   constructor() {
-//     this._baseUrl = 'https://restcountries.com/v2/name/';
-//     this._searchQuery = 'ukraine';
-//   }
-
-//   set searchQuery(value) {
-//     return (this._searchQuery = value);
-//   }
-
-//   get searchQuery() {
-//     return this._searchQuery
-//   }
-
-//   getFetch() {
-//     let url = this._baseUrl + this._searchQuery;
-//     return fetch(url)
-//       .then(data => data.json())
-//       .then(data => { return data });
-//   }
-
-
-// }
-
-// const fetchCountries = new FetchCountries()
-
-// console.log(fetchCountries.searchQuery);
-// console.log(fetchCountries.getFetch());
-
-// const mark = fetchCountries.getFetch().then(data => markup(data));
-// console.log(mark);
-
-// countriesEl.innerHTML = mark;
-

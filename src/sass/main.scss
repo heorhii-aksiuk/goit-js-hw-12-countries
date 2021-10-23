@@ -31,7 +31,27 @@ body {
 section {
   display: flex;
   flex-direction: column;
-  background-color: #ffb84e;
+  background-color: #ffb84e36;
+  opacity: 0.85;
+  border-bottom: 1px solid #272727;;
+  box-shadow: 3px 3px 5px -2px #000000;
+  border-radius: 0 0 10px 10px;
+  animation: bg-color-change 30s infinite;
+
+  @keyframes bg-color-change {
+  0% { background:#ff6868 ; }
+  10% { background:#ffc368 ; }
+  20% { background:#d7ff68 ; }
+  30% { background:#6dff68 ; }
+  40% { background:#68ff75 ; }
+  50% { background:#68ffde ; }
+  60% { background:#68c8ff ; }
+  70% { background:#687fff ; }
+  80% { background:#ff68eb ; }
+  90% { background:#c868ff ; }
+  100% { background: #ff6868}
+}
+
 }
 
 h1 {
@@ -55,6 +75,22 @@ form {
 
 input {
   padding-left: 10px;
+  border-radius: 7px;
+  background-color: #ffffff;
+  border: 2px solid #303030;
+  border-radius: 10px;
+  box-shadow: 2px 2px 4px -2px #000000;
+  outline: none;
+  opacity: 0.8;
+
+  &::placeholder {
+    font-size: 15px;
+  }
+
+  &:focus {
+  box-shadow: 2px 2px 2px -2px #000000;
+   opacity: 1;
+  }
 }
 
 .countries-info-container {
@@ -112,7 +148,3 @@ input {
   display: none;
 }
 
-// @media screen and (min-width: 768px) 
-
-
-// @media screen and (min-width: 1200px)
